@@ -1,0 +1,54 @@
+.current-weather-wrap {
+    .current-location {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .weather-img {
+        img {
+            width: 120px;
+        }
+    }
+
+    .current-temp {
+        font-size: 75px;
+        font-weight: 200;
+    }
+
+    .current-desc {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.weekly-weather-data {
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.single-weekday {
+    min-width: 150px;
+    text-align: center;
+
+    h6 {
+        font-size: 22px;
+    }
+
+    img {
+        width: 50px;
+        height: auto;
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    ul {
+        li {
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+}

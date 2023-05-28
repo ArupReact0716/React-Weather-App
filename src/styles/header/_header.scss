@@ -1,0 +1,21 @@
+.search-box {
+    border-radius: 25px;
+    padding: 4px 10px;
+
+    .form-control {
+        font-size: 18px;
+        border: none;
+        margin: 0 3px;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    button {
+        font-size: 20px;
+        border: 2px solid cadetblue;
+        border-radius: 25px !important;
+        padding: 0 10px;
+    }
+}
