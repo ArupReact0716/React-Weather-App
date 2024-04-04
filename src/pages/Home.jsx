@@ -12,29 +12,45 @@ const Home = () => {
     const { loading, notFound } = useSelector((state) => state.weather)
 
     // state
-    const [location, setLocation] = useState('bangalore')
+    const [currentLocation, setCurrentLocation] = useState({ country: '', state: '', city: '' })
+    // const [location, setLocation] = useState('bangalore')
 
-    useEffect(() => {
-        dispatch(CurrentWeather(location))
-    }, [dispatch,location])
+    // useEffect(() => {
+    //     dispatch(CurrentWeather(location))
+    // }, [dispatch, location])
 
     // handle search input value
     const handleLocation = (city) => {
         setLocation(city)
     }
 
+    useLayoutEffect(() => {
+        getCurrentLocation()
+    }, [])
+
+    async function getCurrentLocation() {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            setCurrentLocation({
+                country: data.country_name,
+                state: data.region_name,
+                city: data.city,
+            });
+        } catch (error) {
+            console.error('IP geolocation error:', error);
+        }
+    }
+
     return (
-        <>
+        <div className="d-flex flex-column">
             <Header handleLocation={handleLocation} />
-
-            {loading === false && <Weather />}
-
-            {loading && notFound &&
-                <div className='bg-white text-center my-3 p-3 rounded'><p className='m-0 h4'>{notFound}</p></div>
-            }
-
+            <div className="flex-grow-1">
+                {loading === false && <Weather />}
+                {notFound && <div className='bg-white text-center my-3 p-3 rounded'><p className='m-0 h4'>{notFound}</p></div>}
+            </div>
             <Footer />
-        </>
+        </div>
     )
 }
 
