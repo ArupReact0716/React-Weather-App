@@ -29,9 +29,15 @@ export const WeatherSlice = createSlice({
     name: 'weather',
     initialState: {
         loading: true,
+        searchValue: '',
         currentWeather: [],
         searchWeather: [],
         notFound: ''
+    },
+    reducers: {
+        setSearchValue: (state, action) => {
+            state.searchValue = action.payload
+        }
     },
     extraReducers: {
         [CurrentWeather.fulfilled]: (state, action) => {
@@ -53,4 +59,6 @@ export const WeatherSlice = createSlice({
         },
     }
 })
+
+export const { setSearchValue } = WeatherSlice.actions
 export default WeatherSlice.reducer

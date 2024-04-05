@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import WeatherItem from './WeatherItem';
 
 const WeeklyWeather = () => {
-    const { loading, weatherData } = useSelector((state) => state.weather)
-
+    const { loading, currentWeather, searchWeather } = useSelector((state) => state.weather)
+    const weatherData = searchValue ? searchWeather : currentWeather
     if (loading) return <></>
 
     return (

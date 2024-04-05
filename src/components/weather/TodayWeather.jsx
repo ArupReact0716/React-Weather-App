@@ -6,7 +6,8 @@ import { WiHumidity, WiCloudyGusts, WiThermometer, WiSunrise, WiSunset } from 'r
 import { MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 
 const TodayWeather = () => {
-    const { loading, weatherData } = useSelector((state) => state.weather)
+    const { loading,searchValue, currentWeather, searchWeather } = useSelector((state) => state.weather)
+    const weatherData = searchValue ?  searchWeather : currentWeather
 
     const sunset = new Date(weatherData?.list[0].sunset * 1000).toLocaleTimeString().slice(0, 4)
     const sunrise = new Date(weatherData?.list[0].sunrise * 1000).toLocaleTimeString().slice(0, 4)

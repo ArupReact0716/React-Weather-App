@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useLayoutEffect } from 'react'
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { CurrentWeather } from '../redux/reducer/WeatherSlice';
@@ -27,7 +27,7 @@ const Home = () => {
 
     return (
         <div className="d-flex flex-column">
-            <Header handleLocation={handleLocation} />
+            <Header />
             <div className="flex-grow-1">
                 {!loading && !notFound && <Weather />}
                 {notFound && <div className='bg-white text-center my-3 p-3 rounded'><p className='m-0 h4'>{notFound}</p></div>}
