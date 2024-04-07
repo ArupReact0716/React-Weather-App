@@ -26,7 +26,7 @@ const Home = () => {
     }
 
     return (
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column w-100">
             <Header />
             <div className="flex-grow-1">
                 {!loading && !notFound && <Weather />}

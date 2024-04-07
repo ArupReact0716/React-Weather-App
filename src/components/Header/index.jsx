@@ -27,8 +27,8 @@ const Header = () => {
 
     return (
         <>
-            <div className="text-center mb-4">
-                <h4>Weather Application</h4>
+            <div className="mb-4">
+                <h1 className='logo-text'>Weather Report 24/7</h1>
             </div>
             <div className="search-box bg-white">
                 <form onSubmit={e => handleForm(e)}>
