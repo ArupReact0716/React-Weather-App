@@ -5,8 +5,8 @@ import WeatherItem from './WeatherItem';
 
 const WeeklyWeather = () => {
     const { loading, currentWeather, searchWeather } = useSelector((state) => state.weather)
-    const weatherData = searchValue ? searchWeather : currentWeather
-    if (loading) return <></>
+    const weatherData = currentWeather
+   //  if (loading) return <></>
 
     return (
         <>
