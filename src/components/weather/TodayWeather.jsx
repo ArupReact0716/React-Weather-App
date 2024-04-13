@@ -13,7 +13,7 @@ const TodayWeather = () => {
 
    return (
       <>
-         <div className="current-weather-wrap p-4 bg-white my-3 rounded">
+         <div className="current-weather-wrap p-4 bg-white bg-opacity-50 my-3 rounded">
             {
                Object.keys(weatherData).length &&
                <div className="row g-4">

@@ -48,14 +48,16 @@ const Header = () => {
 
    return (
       <>
-         <div className="mb-4">
-            <h1 className='logo-text'>Weather Report 24/7</h1>
+         <div className="my-2">
+            <div className="">
+               <img src="../assets/logo-1.png" alt="" height={50} />
+            </div>
          </div>
-         <div className="search-box bg-white">
+         <div className="search-box bg-white bg-opacity-50">
             <form onSubmit={e => handleForm(e)}>
                <InputGroup className='align-items-center'>
-                  <BsSearch size='20' />
-                  <Input type='text' placeholder='Search by City' onChange={e => setSearchCity(e.target.value)} />
+                  <BsSearch size='20' className='me-2' />
+                  <Input type='text' placeholder='Search by City' className='bg-opacity-50 bg-transparent' onChange={e => setSearchCity(e.target.value)} />
                   <button type='submit' className='bg-transparent'>Search</button>
                </InputGroup>
             </form>

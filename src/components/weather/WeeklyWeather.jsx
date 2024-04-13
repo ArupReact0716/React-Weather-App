@@ -8,7 +8,7 @@ const WeeklyWeather = () => {
 
    return (
       <>
-         <div className="bg-white my-3 p-4 rounded">
+         <div className="bg-white bg-opacity-50 my-3 p-4 rounded">
             <h5 className='mb-4'>Extended Forecast</h5>
             <div className="weekly-weather-data w-100">
                <div className="d-flex">
