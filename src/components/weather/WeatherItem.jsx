@@ -5,7 +5,7 @@ const WeatherItem = ({ data }) => {
     const weekday = new Date(data.dt * 1000).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).slice(0, 3)
 
     return (
-        <div className='single-weekday p-3'>
+        <div className='single-weekday gap-3'>
             <h6>{weekday}</h6>
             <img
                 src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}

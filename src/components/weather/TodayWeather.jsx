@@ -6,9 +6,7 @@ import { WiHumidity, WiCloudyGusts, WiThermometer, WiSunrise, WiSunset } from 'r
 import { MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 
 const TodayWeather = () => {
-   const { loading, searchValue, currentWeather, searchWeather } = useSelector((state) => state.weather)
-   const weatherData = currentWeather
-
+   const { currentWeather: weatherData } = useSelector((state) => state.weather)
 
    const sunset = Object.keys(weatherData).length ? new Date(weatherData?.list[0].sunset * 1000).toLocaleTimeString().slice(0, 4) : ''
    const sunrise = Object.keys(weatherData).length ? new Date(weatherData?.list[0]?.sunrise * 1000).toLocaleTimeString().slice(0, 4) : ''
@@ -17,7 +15,7 @@ const TodayWeather = () => {
       <>
          <div className="current-weather-wrap p-4 bg-white my-3 rounded">
             {
-               Object.keys(weatherData).length  &&
+               Object.keys(weatherData).length &&
                <div className="row g-4">
                   <div className="col-12 col-md-7">
                      <div className="current-location">

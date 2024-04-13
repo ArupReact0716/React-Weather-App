@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 // redux
-import { useDispatch, useSelector } from "react-redux";
-import { CurrentWeather, SearchWeather, setSearchValue } from '../../redux/reducer/WeatherSlice';
+import { useDispatch } from "react-redux";
+import { CurrentWeather } from '../../redux/reducer/WeatherSlice';
 // reactstrap
 import { Input, InputGroup } from 'reactstrap'
 // icons
@@ -12,24 +12,26 @@ const Header = () => {
    const dispatch = useDispatch()
    // state
    const [currentLocation, setCurrentLocation] = useState('')
-   const [searchData, setSearchData] = useState('')
+   const [searchCity, setSearchCity] = useState('')
+   const searchValue = useDebounce(searchCity, 1000)
 
-   useEffect(() => {
+   useLayoutEffect(() => {
       getCurrentLocation()
    }, [])
 
+   useEffect(() => {
+      if (searchValue !== '') {
+         dispatch(CurrentWeather(searchValue));
+      } else if (currentLocation !== '') {
+         dispatch(CurrentWeather(currentLocation));
+      } else {
+         console.log('Not get current Location')
+      }
+   }, [searchValue])
+
    const handleForm = (e) => {
       e.preventDefault()
-      //   dispatch(SearchWeather(searchData))
-   }
-
-   const searchHandle = (e) => {
-      e.preventDefault()
-      setSearchData(e.target.value)
-
-      //   dispatch(setSearchValue(e.target.value))
-      //   if (e.target.value === '') {
-      //   }
+      dispatch(CurrentWeather(searchCity));
    }
 
    async function getCurrentLocation() {
@@ -40,12 +42,9 @@ const Header = () => {
          dispatch(CurrentWeather(data.city));
       } catch (error) {
          console.error("IP geolocation error:", error);
+         console.log('Not get current Location')
       }
    }
-
-   const value = useDebounce(searchData, 500)
-   console.log(value)
-
 
    return (
       <>
@@ -56,7 +55,7 @@ const Header = () => {
             <form onSubmit={e => handleForm(e)}>
                <InputGroup className='align-items-center'>
                   <BsSearch size='20' />
-                  <Input type='text' placeholder='Search by City' onChange={searchHandle} />
+                  <Input type='text' placeholder='Search by City' onChange={e => setSearchCity(e.target.value)} />
                   <button type='submit' className='bg-transparent'>Search</button>
                </InputGroup>
             </form>

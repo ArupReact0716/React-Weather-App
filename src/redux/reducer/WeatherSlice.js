@@ -32,6 +32,8 @@ export const WeatherSlice = createSlice({
       [CurrentWeather.fulfilled]: (state, action) => {
          state.loading = false
          state.currentWeather = action.payload
+         state.notFound = ''
+
       },
       [CurrentWeather.rejected]: (state, action) => {
          state.notFound = action.payload.message
